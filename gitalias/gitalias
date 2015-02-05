@@ -1,0 +1,17 @@
+[alias]
+      #https://git.wiki.kernel.org/index.php/Aliases
+      #http://haacked.com/archive/2014/07/28/github-flow-aliases/
+      hist = log --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset | %s%d [%C(yellow)%an%Creset] %Cblue(%cr)' --graph --date=short
+      histd =  !git log --pretty=format:'%at %H' | sort | sed 's/.* //' | git log --stdin --decorate --graph
+      authors = !git shortlog -s -e | sort -r
+      aliasesd = !git config --list | grep 'alias.*' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
+      root = rev-parse --show-toplevel
+      new  = !git init && git add . && git commmit -m \"Initial commit.\"
+      churn  = !git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort -r | awk 'BEGIN {print "count,file"} { print $1 "," $2  }' | less
+      find = log --color  -S 
+      unmerged-branches  = for-each-ref --sort=-authordate --sort=-HEAD --format='%(color:green) %(committerdate:short) %(taggerdate:short) %(color:reset) %(color:yellow)%(objectname:short) %(color:reset)  [%(objecttype)] %(refname:short) %(color:red) %(committeremail) %(taggeremail) %(color:reset)'
+      lyesterday  = log --since '1 day ago' --oneline
+      wyesterday = whatchanged --since='19 day ago' 
+      find-file = !git ls-files -v  | grep
+      graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"  #https://git.wiki.kernel.org/index.php/Aliases
+      aliases = !git config --get-regexp '^alias\\.' | awk -F' ' '{print $1}' | awk -F. '{print $2}' | sort
