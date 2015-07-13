@@ -1,6 +1,7 @@
 # GIT Config 
 
-To use git aliases you need to add these lines into .gitconfig file
+To use git aliases you need to change .gitconfig file.
+
 To configure .gitconfig file you need to run this command:
 ```bash
     git config --global --edit
