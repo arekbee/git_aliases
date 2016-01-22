@@ -1,5 +1,9 @@
 [core]
   editor = \"c:/program files (x86)/Notepad++/notepad++.exe\" -multiInst -nosession
+  autocrlf = true
+
+[color]
+	ui = true
 
 
 [diff]
@@ -8,14 +12,16 @@
 [merge]
     tool = bc2
 
-[mergetool "bc2"]
-  cmd = \"c:/program files (x86)/beyond compare 2/bc2.exe\" \"$LOCAL\" \"$REMOTE\" //savetarget=\"$MERGED\"
-  trustExitCode = true
+
 
 [difftool "bc2"]
   cmd = \"c:/program files (x86)/beyond compare 2/bc2.exe\" \"$LOCAL\" \"$REMOTE\"
 
-
+[mergetool "bc2"]
+  cmd = \"c:/program files (x86)/beyond compare 2/bc2.exe\" \"$LOCAL\" \"$REMOTE\" //savetarget=\"$MERGED\"
+  trustExitCode = true
+  
+  
 
 [difftool "tgit"]
   cmd = 'C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe' \"$LOCAL\" \"$REMOTE\"
