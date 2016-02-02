@@ -23,3 +23,6 @@
       #http://stackoverflow.com/questions/24216116/find-exec-in-git-alias
       ls-ignore = ls-files --other --ignored --exclude-standard
       acp = "!f() { git add . ;  git commit -m $1 ; git push ; git log -n 3;}; f"  ​
+      type = cat-file -t 
+      dump = cat-file -p
+
