@@ -16,7 +16,7 @@ than type in console this command:
 git config --global include.path /PathToFile/gitalias
 ```
 
-## Manualy by cloning whole repo.
+## Manually by cloning whole repo.
 To configure .gitconfig file you need to run this command:
 ```bash
     git config --global --edit
@@ -29,10 +29,8 @@ and then write this text inside console editor:
 ```
 
 
-
-
 # What kind of aliases there are?
-Below are cases where you could 
+Below are cases where you could apply aliases.
 
 
 ### Are you tired of writing most common command git status? Now, you can type only:
