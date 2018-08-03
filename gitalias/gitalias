@@ -27,3 +27,4 @@
       dump = cat-file -p
       s = status
       pushf = push --force-with-lease
+      conflicts = diff --name-only --diff-filter=U
