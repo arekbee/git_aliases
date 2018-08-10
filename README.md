@@ -10,8 +10,7 @@ First you need to download raw file with all aliases:
 curl -o  gitalias https://raw.githubusercontent.com/bnbsystems/git_config/master/gitalias/gitalias
 ```
 
-than type in console this command:
-
+then you need to type in console this command:
 ```bash
 git config --global include.path /PathToFile/gitalias
 ```
