@@ -25,8 +25,16 @@
       acp = "!f() { git add . ;  git commit -m $1 ; git push ; git log -n 3;}; f"
       type = cat-file -t 
       dump = cat-file -p
-      s = status
+      s = status -sb
       pushf = push --force-with-lease
       conflicts = diff --name-only --diff-filter=U
-      b = branch
+	b = branch
       b-to-merge = branch --all --no-merged
+	b-name = rev-parse --abbrev-ref HEAD
+	fetch-all =  !git fetch --prune && git pull --rebase=preserve && git submodule update --init --recursive
+	l = log --graph --oneline -n3 --decorate
+	a = add
+	c = commit --verbose
+	ch = checkout
+	d = diff
+	stashes = stash list
