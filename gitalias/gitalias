@@ -3,7 +3,7 @@
       #http://haacked.com/archive/2014/07/28/github-flow-aliases/
       hist = log --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset | %s%d [%C(yellow)%an%Creset] %Cblue(%cr)' --graph --date=short
       histd =  !git log --pretty=format:'%at %H' | sort | sed 's/.* //' | git log --stdin --decorate --graph
-      authors = !git shortlog -s -e | sort -r
+      authors = !git shortlog -sne --no-merges
       aliasesd = !git config --list | grep 'alias.*' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
       root = rev-parse --show-toplevel
       new  = !git init && git add . && git commmit -m \"Initial commit.\"
