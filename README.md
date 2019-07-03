@@ -90,7 +90,7 @@ git churn
 ### I would like to remove all non-versioned or not commited files. Is there a one command to do this?
 Yes. Clean-all
 ```bash
-git git clean-all
+git clean-all
 ```
 
 ### I am trying to find file, where file name constains special string (like '.exe').
