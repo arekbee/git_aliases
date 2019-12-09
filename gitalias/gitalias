@@ -40,4 +40,4 @@
 	d = diff
 	stashes = stash list
 	fetch-pull-req = fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*/merge
-	ls-full-tree --full-tree -r --name-only HEAD
+	ls-full-tree = ls-tree --full-tree -r --name-only HEAD
