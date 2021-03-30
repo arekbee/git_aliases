@@ -18,7 +18,7 @@
       
       aliases = !git config --get-regexp '^alias\\.' | awk -F' ' '{print $1}' | awk -F. '{print $2}' | sort
       siur = submodule update --init --recursive
-      clean-all = !git reset --hard HEAD && git clean -f -d && git status
+      clean-all = !git reset --hard HEAD && git clean -f -d && git gc --prune=now && git status
       download = "!f() { git clone $1 --recursive --depth=1 ;  find . -name ".git*"  -exec rm -rf "{}"  \\;  ;}; f"
       #http://stackoverflow.com/questions/24216116/find-exec-in-git-alias
       ls-ignore = ls-files --other --ignored --exclude-standard
