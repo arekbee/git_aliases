@@ -1,43 +1,42 @@
+#https://git.wiki.kernel.org/index.php/Aliases
+#http://haacked.com/archive/2014/07/28/github-flow-aliases/
 [alias]
-      #https://git.wiki.kernel.org/index.php/Aliases
-      #http://haacked.com/archive/2014/07/28/github-flow-aliases/
-      hist = log --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset | %s%d [%C(yellow)%an%Creset] %Cblue(%cr)' --graph --date=short
-      histd =  !git log --pretty=format:'%at %H' | sort | sed 's/.* //' | git log --stdin --decorate --graph
-      authors = !git shortlog -sne --no-merges
+      a = add
+      acp = "!f() { git add . ;  git commit -m $1 ; git push ; git log -n 3;}; f"
+      aliases = !git config --get-regexp '^alias\\.' | awk -F' ' '{print $1}' | awk -F. '{print $2}' | sort
       aliasesd = !git config --list | grep 'alias.*' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
-      root = rev-parse --show-toplevel
-      new  = !git init && git add . && git commmit -m \"Initial commit.\"
+      authors = !git shortlog -sne --no-merges
+      b = branch
+      b-name = rev-parse --abbrev-ref HEAD
+      b-to-merge = branch --all --no-merged
+      c = commit --verbose
+      ch = checkout
       churn  = !git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort -r | awk 'BEGIN {print "count,file"} { print $1 "," $2  }' | less
+      clean-all = !git reset --hard HEAD && git clean -f -d && git gc --prune=now && git status
+      conflicts = diff --name-only --diff-filter=U
+      d = diff
+      download = "!f() { git clone $1 --recursive --depth=1 ;  find . -name ".git*"  -exec rm -rf "{}"  \\;  ;}; f"
+      dump = cat-file -p
+      fetch-all =  !git fetch --prune && git pull --rebase=preserve && git submodule update --init --recursive
+      fetch-pull-req = fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*/merge
       find = log --color  -S 
-      unmerged-branches  = for-each-ref --sort=-authordate --sort=-HEAD --format='%(color:green) %(committerdate:short) %(taggerdate:short) %(color:reset) %(color:yellow)%(objectname:short) %(color:reset)  [%(objecttype)] %(refname:short) %(color:red) %(committeremail) %(taggeremail) %(color:reset)'
-      lyesterday  = log --since '1 day ago' --oneline
-      wyesterday = whatchanged --since='19 day ago' 
       find-file = !git ls-files -v  | grep
       graphviz = "!f() { echo 'digraph git {' ; git log -n 100 --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"  
-      #https://git.wiki.kernel.org/index.php/Aliases
-      
-      aliases = !git config --get-regexp '^alias\\.' | awk -F' ' '{print $1}' | awk -F. '{print $2}' | sort
-      siur = submodule update --init --recursive
-      clean-all = !git reset --hard HEAD && git clean -f -d && git gc --prune=now && git status
-      download = "!f() { git clone $1 --recursive --depth=1 ;  find . -name ".git*"  -exec rm -rf "{}"  \\;  ;}; f"
-      #http://stackoverflow.com/questions/24216116/find-exec-in-git-alias
+      hist = log --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset | %s%d [%C(yellow)%an%Creset] %Cblue(%cr)' --graph --date=short
+      histd =  !git log --pretty=format:'%at %H' | sort | sed 's/.* //' | git log --stdin --decorate --graph
+      l = log --graph --oneline -n3 --decorate
+      ls-full-tree = ls-tree --full-tree -r --name-only HEAD
       ls-ignore = ls-files --other --ignored --exclude-standard
-      acp = "!f() { git add . ;  git commit -m $1 ; git push ; git log -n 3;}; f"
-      type = cat-file -t 
-      dump = cat-file -p
-      s = status -sb
+      lyesterday  = log --since '1 day ago' --oneline
+      new  = !git init && git add . && git commmit -m \"Initial commit.\"
+      p = push
+      pp = !git pull  && git push
       pushf = push --force-with-lease
-      conflicts = diff --name-only --diff-filter=U
-	b = branch
-      b-to-merge = branch --all --no-merged
-	b-name = rev-parse --abbrev-ref HEAD
-	fetch-all =  !git fetch --prune && git pull --rebase=preserve && git submodule update --init --recursive
-	l = log --graph --oneline -n3 --decorate
-	a = add
-	c = commit --verbose
-	ch = checkout
-	r = remote -v
-	d = diff
-	stashes = stash list
-	fetch-pull-req = fetch origin +refs/pull/*/merge:refs/remotes/origin/pr/*/merge
-	ls-full-tree = ls-tree --full-tree -r --name-only HEAD
+      r = remote -v
+      root = rev-parse --show-toplevel
+      s = status -sb
+      siur = submodule update --init --recursive
+      stashes = stash list
+      type = cat-file -t 
+      unmerged-branches  = for-each-ref --sort=-authordate --sort=-HEAD --format='%(color:green) %(committerdate:short) %(taggerdate:short) %(color:reset) %(color:yellow)%(objectname:short) %(color:reset)  [%(objecttype)] %(refname:short) %(color:red) %(committeremail) %(taggeremail) %(color:reset)'
+      wyesterday = whatchanged --since='19 day ago' 
