@@ -29,7 +29,7 @@
       ls-ignore = ls-files --other --ignored --exclude-standard
       lyesterday  = log --since '1 day ago' --oneline
       new  = !git init && git add . && git commmit -m \"Initial commit.\"
-      p = push
+      p = pull
       pp = !git pull  && git push
       pushf = push --force-with-lease
       r = remote -v
